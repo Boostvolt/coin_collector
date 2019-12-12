@@ -63,9 +63,9 @@ namespace Spiel.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap chicken_hurt {
+        internal static System.Drawing.Bitmap coin {
             get {
-                object obj = ResourceManager.GetObject("chicken_hurt", resourceCulture);
+                object obj = ResourceManager.GetObject("coin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Spiel.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap chicken_normal {
+        internal static System.Drawing.Bitmap figure_hurt {
             get {
-                object obj = ResourceManager.GetObject("chicken_normal", resourceCulture);
+                object obj = ResourceManager.GetObject("figure_hurt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Spiel.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap chicken_normal2 {
+        internal static System.Drawing.Bitmap figure_left {
             get {
-                object obj = ResourceManager.GetObject("chicken_normal2", resourceCulture);
+                object obj = ResourceManager.GetObject("figure_left", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Spiel.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap egg {
+        internal static System.Drawing.Bitmap figure_right {
             get {
-                object obj = ResourceManager.GetObject("egg", resourceCulture);
+                object obj = ResourceManager.GetObject("figure_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

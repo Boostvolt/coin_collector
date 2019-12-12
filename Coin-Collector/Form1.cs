@@ -52,28 +52,27 @@ namespace Spiel
                 goright = false;
             }
         }
-
         private void gameTick(object sender, EventArgs e)
         {
-            label1.Text = "Hgihscore: " + highscore;
+            label1.Text = "Highscore: " + highscore;
             label2.Text = "Socre: " + score;
             label3.Text = "Leben: " + missed;
 
-            if (goleft == true && chicken.Left > 0)
+            if (goleft == true && figure.Left > 0)
             {
-                chicken.Left -= 12;
-                chicken.Image = Properties.Resources.chicken_normal2;
+                figure.Left -= 12;
+                figure.Image = Properties.Resources.figure_left;
             }
 
-            if (goright == true && chicken.Left + chicken.Width < this.ClientSize.Width)
+            if (goright == true && figure.Left + figure.Width < this.ClientSize.Width)
             {
-                chicken.Left += 12;
-                chicken.Image = Properties.Resources.chicken_normal;
+                figure.Left += 12;
+                figure.Image = Properties.Resources.figure_right;
             }
 
             foreach (Control X in this.Controls)
             {
-                if (X is PictureBox && X.Tag == "Eggs")
+                if (X is PictureBox && X.Tag == "Coins")
                 {
                     X.Top += speed;
 
@@ -81,8 +80,8 @@ namespace Spiel
                     {
                         splash.Image = Properties.Resources.splash;
                         splash.Location = X.Location;
-                        splash.Height = 59;
-                        splash.Width = 60;
+                        splash.Height = 75;
+                        splash.Width = 75;
                         splash.BackColor = System.Drawing.Color.Transparent;
 
                         this.Controls.Add(splash);
@@ -91,10 +90,10 @@ namespace Spiel
                         X.Left = rndX.Next(5, this.ClientSize.Width - X.Width);
                         missed--;
                         label3.Text = "Leben: " + missed;
-                        chicken.Image = Properties.Resources.chicken_hurt;
+                        figure.Image = Properties.Resources.figure_hurt;
                     }
 
-                    if (X.Bounds.IntersectsWith(chicken.Bounds))
+                    if (X.Bounds.IntersectsWith(figure.Bounds))
                         {
                             X.Top = rndY.Next(80, 300) * -1;
                             X.Left = rndX.Next(5, this.ClientSize.Width - X.Width);
@@ -104,19 +103,29 @@ namespace Spiel
                     
                     if (score >= 20)
                     {
+                        speed = 12;
+                    }
+
+                    if (score >= 40)
+                    {
                         speed = 16;
+                    }
+
+                    if (score >= 60)
+                    {
+                        speed = 20;
                     }
 
                     if (score > highscore)
                     {
                         highscore++;
-                        label1.Text = "Hgihscore: " + highscore;
+                        label1.Text = "Highscore: " + highscore;
                     }
 
                     if (missed == 0) 
                     {
                         gameTimer.Stop();
-                        MessageBox.Show("Game Over! Du hast zuviele Eier verloren" + "\r\n" + "Drücke OK für einene neuen Versuch");
+                        MessageBox.Show("Game Over! Du hast zuviele Münzen verloren." + "\r\n" + "Drücke OK für einene neuen Versuch.");
                         reset();
                     }  
                 }
@@ -126,15 +135,15 @@ namespace Spiel
         {
             foreach (Control X in this.Controls)
             {
-                if (X is PictureBox && X.Tag == "Eggs")
+                if (X is PictureBox && X.Tag == "Coins")
                 {
                     X.Top = rndY.Next(80, 300) * -1;
                     X.Left = rndX.Next(5, this.ClientSize.Width - X.Width);
                 }
             }
 
-            chicken.Left = this.ClientSize.Width / 2;
-            chicken.Image = Properties.Resources.chicken_normal2;
+            figure.Left = this.ClientSize.Width / 2;
+            figure.Image = Properties.Resources.figure_left;
 
             score = 0;
             missed = 5;
@@ -143,6 +152,21 @@ namespace Spiel
             goleft = false;
             goright = false;
             gameTimer.Start();
+        }
+
+        private void figure_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
