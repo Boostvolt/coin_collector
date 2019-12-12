@@ -99,10 +99,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(63, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "Highscore";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
             // 
@@ -110,7 +109,7 @@
             this.label3.Location = new System.Drawing.Point(12, 55);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.Size = new System.Drawing.Size(45, 15);
             this.label3.TabIndex = 7;
             this.label3.Text = "Leben:";
             // 
@@ -119,10 +118,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(42, 15);
             this.label2.TabIndex = 8;
             this.label2.Text = "Score:";
-            this.label2.Click += new System.EventHandler(this.label3_Click);
             // 
             // Form1
             // 
