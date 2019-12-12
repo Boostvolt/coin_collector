@@ -1,4 +1,4 @@
-﻿namespace Spiel
+﻿namespace CoinCollector
 {
     partial class Form1
     {
@@ -80,7 +80,7 @@
             // 
             // figure
             // 
-            this.figure.Image = global::Spiel.Properties.Resources.figure_left;
+            this.figure.Image = global::CoinCollector.Properties.Resources.figure_left;
             this.figure.Location = new System.Drawing.Point(253, 568);
             this.figure.Name = "figure";
             this.figure.Size = new System.Drawing.Size(151, 132);
@@ -92,7 +92,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::Spiel.Properties.Resources.coin;
+            this.pictureBox3.Image = global::CoinCollector.Properties.Resources.coin;
             this.pictureBox3.Location = new System.Drawing.Point(470, 110);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(66, 66);
@@ -103,7 +103,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Spiel.Properties.Resources.coin;
+            this.pictureBox2.Image = global::CoinCollector.Properties.Resources.coin;
             this.pictureBox2.Location = new System.Drawing.Point(216, 110);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(66, 66);
@@ -114,7 +114,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Spiel.Properties.Resources.coin;
+            this.pictureBox1.Image = global::CoinCollector.Properties.Resources.coin;
             this.pictureBox1.Location = new System.Drawing.Point(36, 110);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(66, 66);

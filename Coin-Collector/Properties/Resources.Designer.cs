@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Spiel.Properties {
+namespace CoinCollector.Properties {
     using System;
     
     

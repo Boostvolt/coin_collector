@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Spiel
+namespace CoinCollector
 {
     public partial class Form1 : Form
     {
@@ -94,7 +94,7 @@ namespace Spiel
                     }
 
                     if (X.Bounds.IntersectsWith(figure.Bounds))
-                        {
+                    {
                             X.Top = rndY.Next(80, 300) * -1;
                             X.Left = rndX.Next(5, this.ClientSize.Width - X.Width);
                             score++;
