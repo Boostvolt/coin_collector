@@ -153,21 +153,6 @@ namespace CoinCollector
             goright = false;
             gameTimer.Start();
         }
-
-        private void figure_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 
