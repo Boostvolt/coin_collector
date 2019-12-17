@@ -12,16 +12,16 @@ namespace CoinCollector
 {
     public partial class Form1 : Form
     {
-        bool goleft;
-        bool goright;
-        int speed = 8;
-        int highscore = 0;
-        int score = 0;
-        int life = 5;
+        bool goleft; //check player can move left
+        bool goright; //check player can move right
+        int speed = 8; //default speed for the Coins dropping
+        int highscore = 0; // default highscore value
+        int score = 0; //default score value
+        int life = 5; //default life value
         
-        Random rndY = new Random();
-        Random rndX = new Random();
-        PictureBox splash = new PictureBox();
+        Random rndY = new Random(); //generate a random Y location
+        Random rndX = new Random(); //genreate a random X location
+        PictureBox splash = new PictureBox(); //create a new splash picture box
 
         public Form1()
         {
@@ -34,15 +34,18 @@ namespace CoinCollector
         {
             if (e.KeyCode == Keys.Left)
             {
+                //if left key is pressed goleft to true
                 goleft = true;
             }
             if (e.KeyCode == Keys.Right)
             {
+                //if right key is pressed goright to true
                 goright = true;
             }
 
             if (e.KeyCode == Keys.Escape)
             {
+                //if esc key is pressed pause game
                 if (gameTimer.Enabled)
                 {
                     gameTimer.Enabled = false;
@@ -59,10 +62,12 @@ namespace CoinCollector
         {
             if (e.KeyCode == Keys.Left)
             {
+                //if left key is up goleft to false
                 goleft = false;
             }
             if (e.KeyCode == Keys.Right)
             {
+                //if right key is up goright to false
                 goright = false;
             }
         }
@@ -74,27 +79,34 @@ namespace CoinCollector
 
             if (goleft == true && figure.Left > 0)
             {
+                //figure 12 pixel to the left
                 figure.Left -= 12;
+                //figure image change to the one moving left
                 figure.Image = Properties.Resources.figure_left;
             }
 
             if (goright == true && figure.Left + figure.Width < this.ClientSize.Width)
             {
+                //figure 12 pixel to the right
                 figure.Left += 12;
+                //figure image change to the one moving right
                 figure.Image = Properties.Resources.figure_right;
             }
 
+            //check the coins dropping from the top
             foreach (Control X in this.Controls)
             {
                 if (X is PictureBox && X.Tag == "Coins")
                 {
+                    //move X towards the bottom
                     X.Top += speed;
 
                     if (X.Top + X.Height > this.ClientSize.Height)
                     {
-                        System.Media.SoundPlayer hurt = new System.Media.SoundPlayer(@"c:\sound_hurt.wav");
+                        System.Media.SoundPlayer hurt = new System.Media.SoundPlayer(@"c:\Users\jankott\OneDrive - Kantonsschule Frauenfeld\IMS\GitHub\coin_collector\CoinCollector\CoinCollector\Resources\sound_hurt.wav");
                         hurt.Play();
 
+                        //if the coins hit the floor show splash image
                         splash.Image = Properties.Resources.splash;
                         splash.Location = X.Location;
                         splash.Height = 75;
@@ -103,63 +115,67 @@ namespace CoinCollector
 
                         this.Controls.Add(splash);
 
-                        X.Top = rndY.Next(80, 300) * -1;
+                        //position the coins random Y location
+                        X.Top = rndY.Next(80, 300) * -1; 
+                        //position the coins random X location
                         X.Left = rndX.Next(5, this.ClientSize.Width - X.Width);
                         life--;                      
 
                         label3.Text = "Leben: " + life;
                         figure.Image = Properties.Resources.figure_hurt;
                     }
-
+                    
+                    //if figure collect coin
                     if (X.Bounds.IntersectsWith(figure.Bounds))
                     {
-                        System.Media.SoundPlayer coin = new System.Media.SoundPlayer(@"c:\sound_coin.wav");
+                        System.Media.SoundPlayer coin = new System.Media.SoundPlayer(@"c:\Users\jankott\OneDrive - Kantonsschule Frauenfeld\IMS\GitHub\coin_collector\CoinCollector\CoinCollector\Resources\sound_coin.wav");
                         coin.Play();
 
                         X.Top = rndY.Next(80, 300) * -1;
                         X.Left = rndX.Next(5, this.ClientSize.Width - X.Width);
                         score++;
-                        label2.Text = "Socre: " + score;
+                        label2.Text = "Score: " + score;
                     }
 
-                    //Level 1
+                    //level 1
                     if (score >= 20)
                     {
                         speed = 12;
                     }
 
-                    //Level 2
+                    //level 2
                     if (score >= 40)
                     {
                         speed = 16;
                     }
 
-                    //Level 3
+                    //level 3
                     if (score >= 60)
                     {
                         speed = 20;
                     }
 
-                    //Level 4
+                    //level 4
                     if (score > highscore)
                     {
                         highscore++;
                         label1.Text = "Highscore: " + highscore;
                     }
 
-
+                    //game over
                     if (life == 0)
                     {
-                        System.Media.SoundPlayer coin = new System.Media.SoundPlayer(@"c:\sound_over.wav");
+                        System.Media.SoundPlayer coin = new System.Media.SoundPlayer(@"c:\Users\jankott\OneDrive - Kantonsschule Frauenfeld\IMS\GitHub\coin_collector\CoinCollector\CoinCollector\Resources\sound_over.wav");
                         coin.Play();
 
                         gameTimer.Stop();
-                        MessageBox.Show("Game Over! Du hast zuviele Münzen verloren." + "\r\n" + "Drücke OK für einene neuen Versuch.");
+                        MessageBox.Show("Game Over! Du hast zuviele Münzen verloren." + "\r\n" + "Drücke OK für einen neuen Versuch.");
                         reset();
                     }
                 }
             }
         }
+        //reset everything
         private void reset()
         {
             foreach (Control X in this.Controls)
@@ -181,11 +197,6 @@ namespace CoinCollector
             goleft = false;
             goright = false;
             gameTimer.Start();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

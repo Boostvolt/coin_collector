@@ -134,7 +134,6 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 37);
             this.label4.TabIndex = 7;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // pictureBox4
             // 
@@ -160,6 +159,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Coin Collector";
