@@ -17,7 +17,7 @@ namespace CoinCollector
         int speed = 8;
         int highscore = 0;
         int score = 0;
-        int missed = 5;
+        int life = 5;
         
         Random rndY = new Random();
         Random rndX = new Random();
@@ -46,11 +46,11 @@ namespace CoinCollector
                 if (gameTimer.Enabled)
                 {
                     gameTimer.Enabled = false;
-                    //label4.Text = "PAUSE";
+                    label4.Text = "PAUSE";
                 }
                 else{
                     gameTimer.Enabled = true;
-                    //label4.Text = "";
+                    label4.Text = "";
                 }
             }
         }
@@ -69,8 +69,8 @@ namespace CoinCollector
         private void gameTick(object sender, EventArgs e)
         {
             label1.Text = "Highscore: " + highscore;
-            label2.Text = "Socre: " + score;
-            label3.Text = "Leben: " + missed;
+            label2.Text = "Score: " + score;
+            label3.Text = "Leben: " + life;
 
             if (goleft == true && figure.Left > 0)
             {
@@ -92,6 +92,9 @@ namespace CoinCollector
 
                     if (X.Top + X.Height > this.ClientSize.Height)
                     {
+                        System.Media.SoundPlayer hurt = new System.Media.SoundPlayer(@"c:\sound_hurt.wav");
+                        hurt.Play();
+
                         splash.Image = Properties.Resources.splash;
                         splash.Location = X.Location;
                         splash.Height = 75;
@@ -102,13 +105,17 @@ namespace CoinCollector
 
                         X.Top = rndY.Next(80, 300) * -1;
                         X.Left = rndX.Next(5, this.ClientSize.Width - X.Width);
-                        missed--;
-                        label3.Text = "Leben: " + missed;
+                        life--;                      
+
+                        label3.Text = "Leben: " + life;
                         figure.Image = Properties.Resources.figure_hurt;
                     }
 
                     if (X.Bounds.IntersectsWith(figure.Bounds))
                     {
+                        System.Media.SoundPlayer coin = new System.Media.SoundPlayer(@"c:\sound_coin.wav");
+                        coin.Play();
+
                         X.Top = rndY.Next(80, 300) * -1;
                         X.Left = rndX.Next(5, this.ClientSize.Width - X.Width);
                         score++;
@@ -141,8 +148,11 @@ namespace CoinCollector
                     }
 
 
-                    if (missed == 0)
+                    if (life == 0)
                     {
+                        System.Media.SoundPlayer coin = new System.Media.SoundPlayer(@"c:\sound_over.wav");
+                        coin.Play();
+
                         gameTimer.Stop();
                         MessageBox.Show("Game Over! Du hast zuviele Münzen verloren." + "\r\n" + "Drücke OK für einene neuen Versuch.");
                         reset();
@@ -165,7 +175,7 @@ namespace CoinCollector
             figure.Image = Properties.Resources.figure_left;
 
             score = 0;
-            missed = 5;
+            life = 5;
             speed = 8;
 
             goleft = false;
