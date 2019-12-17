@@ -18,10 +18,11 @@ namespace CoinCollector
         int highscore = 0;
         int score = 0;
         int missed = 5;
+        
         Random rndY = new Random();
         Random rndX = new Random();
         PictureBox splash = new PictureBox();
-       
+
         public Form1()
         {
             InitializeComponent();
@@ -38,6 +39,19 @@ namespace CoinCollector
             if (e.KeyCode == Keys.Right)
             {
                 goright = true;
+            }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (gameTimer.Enabled)
+                {
+                    gameTimer.Enabled = false;
+                    //label4.Text = "PAUSE";
+                }
+                else{
+                    gameTimer.Enabled = true;
+                    //label4.Text = "";
+                }
             }
         }
 
@@ -86,7 +100,7 @@ namespace CoinCollector
 
                         this.Controls.Add(splash);
 
-                        X.Top = rndY.Next(80, 300)*-1;
+                        X.Top = rndY.Next(80, 300) * -1;
                         X.Left = rndX.Next(5, this.ClientSize.Width - X.Width);
                         missed--;
                         label3.Text = "Leben: " + missed;
@@ -95,39 +109,44 @@ namespace CoinCollector
 
                     if (X.Bounds.IntersectsWith(figure.Bounds))
                     {
-                            X.Top = rndY.Next(80, 300) * -1;
-                            X.Left = rndX.Next(5, this.ClientSize.Width - X.Width);
-                            score++;
-                            label2.Text = "Socre: " + score;
+                        X.Top = rndY.Next(80, 300) * -1;
+                        X.Left = rndX.Next(5, this.ClientSize.Width - X.Width);
+                        score++;
+                        label2.Text = "Socre: " + score;
                     }
-                    
+
+                    //Level 1
                     if (score >= 20)
                     {
                         speed = 12;
                     }
 
+                    //Level 2
                     if (score >= 40)
                     {
                         speed = 16;
                     }
 
+                    //Level 3
                     if (score >= 60)
                     {
                         speed = 20;
                     }
 
+                    //Level 4
                     if (score > highscore)
                     {
                         highscore++;
                         label1.Text = "Highscore: " + highscore;
                     }
 
-                    if (missed == 0) 
+
+                    if (missed == 0)
                     {
                         gameTimer.Stop();
                         MessageBox.Show("Game Over! Du hast zuviele Münzen verloren." + "\r\n" + "Drücke OK für einene neuen Versuch.");
                         reset();
-                    }  
+                    }
                 }
             }
         }
@@ -153,6 +172,10 @@ namespace CoinCollector
             goright = false;
             gameTimer.Start();
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
-
