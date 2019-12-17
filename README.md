@@ -1,6 +1,6 @@
-# Coin-Collector
+# CoinC ollector
 
-A 2D Coin-Collector game developed for a C# school project.
+A 2D Coin Collector game developed for a C# school project.
 
 ## Requirements
 None
