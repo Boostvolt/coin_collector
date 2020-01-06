@@ -20,6 +20,7 @@ namespace CoinCollector
         {
             InitializeComponent();
             this.DoubleBuffered = true;
+            CenterToScreen();
             reset();
         }
 
