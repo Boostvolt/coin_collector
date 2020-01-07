@@ -109,7 +109,7 @@ namespace CoinCollector
 
                         this.Controls.Add(splash);
 
-                        //position the coins random Y location
+                        //position the coins Y location
                         X.Top = rndY.Next(80, 300) * -1; 
                         //position the coins random X location
                         X.Left = rndX.Next(5, this.ClientSize.Width - X.Width);
